@@ -8,6 +8,17 @@ import hashlib,base64
 
 class UserService():
     '''处理User的相关操作'''
+    @staticmethod
+    def geneAuthCode(user_info):
+        '''
+        :param user_info: 数据库中登录后查询到的用户记录对象
+        :return: 产生授权码，用于加密cookie
+        '''
+        m = hashlib.md5()
+        # 加密字符串由以下4部分组成
+        str = '%s-%s-%s-%s'%(user_info.uid, user_info.login_name, user_info.login_pwd, user_info.login_salt)
+        m.update(str.encode("utf-8"))
+        return m.hexdigest()
 
     @staticmethod
     def genePwd(pwd, salt):
@@ -21,3 +32,4 @@ class UserService():
         str = "%s-%s" % (base64.encodebytes(pwd.encode("utf-8")), salt)
         m.update(str.encode("utf-8"))
         return m.hexdigest()
+

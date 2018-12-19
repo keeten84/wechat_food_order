@@ -13,3 +13,5 @@ SERVER_PORT = 5000
 DEBUG = False
 
 SQLALCHEMY_ECHO = False
+
+AUTH_COOKIE_NAME = "shike_food_order"

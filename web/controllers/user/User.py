@@ -4,11 +4,12 @@
 # @Date  : 2018/12/17
 # @Desc  : 路由分配，/user目录下的各个用户管理页面
 
-from flask import Blueprint, render_template, request, jsonify
-
+import json
+from flask import Blueprint, render_template, request, jsonify, make_response
 from application import db, app
 from common.models.user import User
 from common.libs.user.UserService import UserService
+from application import app
 
 route_user = Blueprint('user_page', __name__)
 
@@ -47,7 +48,11 @@ def login():
         resp['code'] = -1
         resp['msg'] = '请输入正确的用户名和密码 -2'
 
-    return jsonify(resp)
+    response = make_response(json.dumps(resp))
+    #cookie由于可以模拟，所有第一个%s需要实现加密逻辑
+    response.set_cookie(app.config['AUTH_COOKIE_NAME'],'%s#%s'%(UserService.geneAuthCode(user_info),user_info.uid))
+    # 登录成功返回带有cookie的成功登录信息
+    return response
 
 
 
