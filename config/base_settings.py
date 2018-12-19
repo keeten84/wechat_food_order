@@ -15,3 +15,14 @@ DEBUG = False
 SQLALCHEMY_ECHO = False
 
 AUTH_COOKIE_NAME = "shike_food_order"
+
+
+# 自定义一些需要过滤不需要检测对url相对路径
+IGNORE_URLS = [
+    "^/user/login",
+]
+
+IGNORE_CHECK_LOGIN_URLS = [
+    "^/static",
+    "^/favicon.ico",
+]
