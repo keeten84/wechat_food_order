@@ -8,11 +8,10 @@ SERVER_PORT = 8999
 
 DEBUG = True
 
+SQLALCHEMY_ECHO = True
 # 出现 UserWarning: Neither SQLALCHEMY_DATABASE_URI nor SQLALCHEMY_BINDS is set错误的解决方法
-SQLALCHEMY_DATABASE_URI = 'mysql://root:andy1984@127.0.0.1/mysql?charset=utf8'
-SQLALCHEMY_COMMIT_TEARDOWN = True
+SQLALCHEMY_DATABASE_URI = 'mysql://root:andy1984@127.0.0.1/food_order?charset=utf8mb4'
 # 出现 FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS错误提示的解决方法
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 # 将所有的sql语句打印处理的设置
-SQLALCHEMY_ECHO = True
 SQLALCHEM_ENCODING = 'utf-8'
