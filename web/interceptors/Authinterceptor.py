@@ -5,7 +5,7 @@
 # @Desc  : 自定义的拦截器
 
 from application import app
-from flask import request, redirect
+from flask import request, redirect, g
 from common.models.user import User
 from common.libs.user.UserService import UserService
 from common.libs.UrlManager import UrlManager
@@ -26,6 +26,11 @@ def before_request():
         return
 
     user_info = check_login()
+    # 通过g变量获取用户的信息
+    g.current_user = None
+    if user_info:
+        g.current_user = user_info
+
 
     pattern = re.compile('%s' % '|'.join(ignore_urls))
     if pattern.match(path):
