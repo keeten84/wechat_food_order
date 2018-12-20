@@ -5,6 +5,9 @@
 # @Desc  : 用于处理user相关的操作
 
 import hashlib,base64
+import random
+import string
+
 
 class UserService():
     '''处理User的相关操作'''
@@ -33,3 +36,12 @@ class UserService():
         m.update(str.encode("utf-8"))
         return m.hexdigest()
 
+    @staticmethod
+    def geneSalt(length=16):
+        '''
+        随机产生一个16位的salt
+        :param length:
+        :return:
+        '''
+        keylist = [random.choice((string.ascii_letters + string.digits)) for i in range(length)]
+        return ("".join(keylist))
