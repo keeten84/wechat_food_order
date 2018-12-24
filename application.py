@@ -29,6 +29,7 @@ app = Application(__name__, template_folder= os.getcwd()+'/web/templates/',root_
 manager = Manager(app)
 
 
+
 # 函数模版：将python的方法注入到html里面使用
 from common.libs.UrlManager import UrlManager
 app.add_template_global(UrlManager.buildStaticUrl, 'buildStaticUrl')

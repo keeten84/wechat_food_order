@@ -15,3 +15,5 @@ SQLALCHEMY_DATABASE_URI = 'mysql://root:andy1984@127.0.0.1/food_order?charset=ut
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 # 将所有的sql语句打印处理的设置
 SQLALCHEM_ENCODING = 'utf-8'
+
+RELEASE_VERSION = '20181224001'

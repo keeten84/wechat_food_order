@@ -8,7 +8,7 @@ import json
 from flask import Blueprint, request, jsonify, make_response, redirect, g
 from application import db, app
 from common.models.user import User
-from common.libs.user.Helper import ops_render
+from common.libs.Helper import ops_render
 from common.libs.user.UserService import UserService
 from application import app
 from common.libs.UrlManager import UrlManager
@@ -49,6 +49,12 @@ def login():
     if user_info.login_pwd != UserService.genePwd(login_pwd, user_info.login_salt):
         resp['code'] = -1
         resp['msg'] = '请输入正确的用户名和密码 -2'
+        return jsonify(resp)
+
+    if user_info.status !=1:
+        resp['code'] = -1
+        resp['msg'] = '账号已经被禁止使用，请联系管理员'
+        return jsonify(resp)
 
     # 添加cookie
     response = make_response(json.dumps(resp))

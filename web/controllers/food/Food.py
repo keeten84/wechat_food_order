@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint
-from common.libs.user.Helper import ops_render
+from common.libs.Helper import ops_render
 
 route_food = Blueprint( 'food_page',__name__ )
 

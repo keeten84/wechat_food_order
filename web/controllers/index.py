@@ -5,7 +5,7 @@
 # @Desc  : 实现flask的blueprint蓝图功能
 
 from flask import Blueprint, g
-from common.libs.user.Helper import ops_render
+from common.libs.Helper import ops_render
 
 route_index = Blueprint('index_page', __name__)
 

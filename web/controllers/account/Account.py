@@ -5,11 +5,10 @@
 # @Desc  : 路由分配，/account目录下的各个用户管理页面
 
 from flask import Blueprint, request, redirect, jsonify
-from common.libs.user.Helper import ops_render
+from common.libs.Helper import ops_render, iPagination, getCurrtentDate
+from common.models.log.AppAccessLog import AppAccessLog
 from common.models.user import User
-from common.libs.user.Helper import iPagination
 from common.libs.UrlManager import UrlManager
-from common.libs.user.Helper import getCurrtentDate
 from common.libs.user.UserService import UserService
 from application import app, db
 from sqlalchemy import or_
@@ -69,6 +68,11 @@ def edit():
     if not info:
         return redirect(reback_url)
     resp_data['info'] = info
+
+    accessLog = AppAccessLog.query.filter_by(uid = uid).all()[::-1][:10]
+    if accessLog:
+        resp_data['AccessLog'] = accessLog
+
 
     return ops_render('account/info.html',resp_data)
 

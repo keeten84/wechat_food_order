@@ -20,6 +20,7 @@ AUTH_COOKIE_NAME = "shike_food_order"
 # 自定义一些需要过滤不需要检测对url相对路径
 IGNORE_URLS = [
     "^/user/login",
+    "^/api"
 ]
 
 IGNORE_CHECK_LOGIN_URLS = [
@@ -34,4 +35,9 @@ PAGE_DISPLAY = 10
 STATUS_MAPPING = {
     "1":"正常",
     "0":"已删除"
+}
+
+MINI_APP = {
+    'appid':'wx562d223ab4b0869d',
+    'appkey':'8697ee1021cdeb7308ce126c6cd74cf6'
 }
