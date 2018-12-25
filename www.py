@@ -5,8 +5,9 @@
 # @Desc  : 用于分发不同的访问路径
 
 from application import app
-# 自定义统计拦截器
+# 自定义统计拦截器/ 错误拦截器
 from web.interceptors.Authinterceptor import *
+from web.interceptors.ErrorInterceptor import *
 # 蓝图功能，对所有url尽心蓝图功能配置
 from web.controllers.index import route_index
 from web.controllers.user.User import route_user
@@ -17,8 +18,7 @@ from web.controllers.food.Food import route_food
 from web.controllers.member.Member import route_member
 from web.controllers.stat.Stat import route_stat
 from web.controllers.api import route_api
-# 错误拦截器
-from web.interceptors.ErrorInterceptor import *
+
 
 app.register_blueprint(route_index, url_prefix='/')
 app.register_blueprint(route_user, url_prefix='/user')
@@ -28,4 +28,4 @@ app.register_blueprint(route_food, url_prefix="/food")
 app.register_blueprint(route_member, url_prefix="/member")
 app.register_blueprint(route_finance, url_prefix="/finance")
 app.register_blueprint(route_stat, url_prefix="/stat")
-app.register_blueprint(route_api, url_prefix="/api")
+app.register_blueprint(route_api,url_prefix = "/api" )
