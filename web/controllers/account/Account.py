@@ -33,6 +33,7 @@ def login():
     if 'status' in req and int(req['status']) > -1:
         query = query.filter(User.status == int(req['status']))
 
+    # 分页显示功能
     page_params = {
         'total': query.count(),
         'page_size':app.config['PAGE_SIZE'],
