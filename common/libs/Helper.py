@@ -79,3 +79,28 @@ def getCurrtentDate( format='%Y-%m-%d %H:%M:%S'):
     :return:
     '''
     return datetime.now().strftime(format)
+
+
+def getDictFilterField( db_model,select_filed,key_field,id_list ):
+    '''
+    根据某个字段获取一个dic出来
+    :param db_model: 数据库
+    :param select_filed: 字段
+    :param key_field: 作为字典key的字段
+    :param id_list:
+    :return:
+    '''
+    ret = {}
+    query = db_model.query
+    if id_list and len( id_list ) > 0:
+        query = query.filter( select_filed.in_( id_list ) )
+
+    list = query.all()
+    if not list:
+        return ret
+    for item in list:
+        if not hasattr( item,key_field ):
+            break
+
+        ret[ getattr( item,key_field ) ] = item
+    return ret

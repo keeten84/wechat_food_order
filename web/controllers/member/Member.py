@@ -114,11 +114,6 @@ def set():
     db.session.commit()
     return jsonify( resp )
 
-    member_info.nickname = nickname
-    member_info.updated_time = getCurrtentDate()
-    db.session.add(member_info)
-    db.session.commit()
-    return jsonify(resp)
 
 
 @route_member.route("/comment")

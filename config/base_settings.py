@@ -41,3 +41,17 @@ MINI_APP = {
     'appid':'wx562d223ab4b0869d',
     'appkey':'8697ee1021cdeb7308ce126c6cd74cf6'
 }
+
+# 上传图片的相关配置
+UPLOAD = {
+    'ext': ['jpg','gif','bmp','jpeg','png','JPG','GIF','BMP','JPEG','PNG'],
+    'perfix_path':'/web/static/upload/',
+    'perfix_url':'static/upload/'
+}
+
+
+
+APP = {
+    'domain': 'http://0.0.0.0:8999/'
+
+}
